@@ -17,7 +17,7 @@ export default async function FlavorDetail({ params }) {
   }`
 
   const item = await client.fetch(query, { slug: params.slug })
-  item.imageUrl = item.image?.asset?.url
+  item.imageUrl = item?.image?.asset?.url
 
   if (!item) return <p className="text-center text-red-600 py-20">Item not found</p>
 
