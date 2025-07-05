@@ -37,9 +37,7 @@ export default function ReviewsPage() {
     <div className="min-h-screen bg-gradient-to-br from-white to-[#c1a089] text-[#8B4513]">
       <Navbar />
       <div className="max-w-5xl mx-auto px-3 md:px-6 pb-10">
-        <h1 className="font_style text-[2rem] md:text-[3rem] tracking-widest font-extrabold mb-10 text-center text-[#8B4513]">Customer Reviews</h1>
-
-        {/* Cart Summary Section */}
+        <h1 className="font_style text-[2rem] md:text-[3rem] tracking-widest font-extrabold mb-10 text-center text-[#8B4513] mt-[-1rem] md:mt-0">Customer Reviews</h1>
         {cartItems.length > 0 && (
           <div className="mb-12">
             <h2 className="text-2xl font-semibold mb-3">Your Cart Summary</h2>

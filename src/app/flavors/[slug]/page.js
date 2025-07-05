@@ -27,7 +27,6 @@ export default async function FlavorDetail({ params }) {
         <Navbar/>
         <div className='max-w-4xl mx-auto px-3 pb-12'>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center pt-2 md:pt-10 px-2">
-        {/* Left: Image */}
         <div>
           {item.imageUrl && (
             <Image
@@ -35,12 +34,10 @@ export default async function FlavorDetail({ params }) {
               alt={item.title}
               width={600}
               height={200}
-              className="rounded-xl shadow-lg w-full h-[13rem] md:w-[25rem] md:h-[25rem] object-cover"
+              className="rounded-xl shadow-lg w-full h-[15rem] md:w-[25rem] md:h-[25rem] object-cover"
             />
           )}
         </div>
-
-        {/* Right: Content */}
         <div>
           <h1 className="font_style text-[1.7rem] md:text-4xl font-bold tracking-widest text-[#8B4513] mb-5 md:mb-10">{item.title}</h1>
           <p className="text-[#91572d] text-[0.9rem] md:text-lg mb-0 md:mb-4 p-2">{item.description}</p>
