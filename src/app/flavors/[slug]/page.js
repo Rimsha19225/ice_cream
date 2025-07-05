@@ -17,6 +17,7 @@ export default async function FlavorDetail({ params }) {
   }`
 
   const item = await client.fetch(query, { slug: params.slug })
+  item.imageUrl = item.image?.asset?.url
 
   if (!item) return <p className="text-center text-red-600 py-20">Item not found</p>
 
@@ -40,9 +41,9 @@ export default async function FlavorDetail({ params }) {
 
         {/* Right: Content */}
         <div>
-          <h1 className="font_style text-[1.7rem] md:text-4xl font-bold tracking-widest text-[#8B4513] mb-5 md:mb-10">{item.title}</h1>
+          <h1 className="font_style text-[1.7rem] md:text-[2.5rem] font-bold tracking-widest text-[#8B4513] mb-5 md:mb-10">{item.title}</h1>
           <p className="text-[#91572d] text-[0.9rem] md:text-lg mb-0 md:mb-4 p-2">{item.description}</p>
-          <p className="text-[1rem] text-2xl font-semibold text-[#8B4513] px-2 md:px-0 p-0 md:p-3">Rs. {item.price}</p>
+          <p className="text-[1rem] text-2xl font-semibold text-[#8B4513] px-2 md:px-3 p-0 md:p-3">Rs. {item.price}</p>
           <div className='px-2'><CartButton product={item}/></div>
         </div>
       </div>

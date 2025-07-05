@@ -20,8 +20,8 @@ export default function CartPage() {
         <p className="text-center text-xl">Your cart is empty.</p>
       ) : (
         <div className="max-w-4xl mx-auto p-2 md:p-5 space-y-6">
-          {cartItems.map((item) => (
-            <div key={item._id} className="flex items-center gap-2 md:gap-5 bg-[#faeee6] p-2 md:p-4 rounded-lg shadow transform transition duration-300 hover:scale-102 group">
+          {cartItems.map((item, index) => (
+            <div key={item._id || item.slug || index} className="flex items-center gap-2 md:gap-5 bg-[#faeee6] p-2 md:p-4 rounded-lg shadow transform transition duration-300 hover:scale-102 group">
               <Image src={item.imageUrl} alt={item.title} width={100} height={100} className="rounded-md w-[5rem] h-[5rem]" />
               <div className="flex-1">
                 <h2 className="text-[1rem] text-xl font-semibold">{item.title}</h2>

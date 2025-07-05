@@ -3,8 +3,12 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import icon from "../../public/image/icon.png"
 import Link from 'next/link'
+import { useCart } from '../context/CartContext'
 
 const Navbar = () => {
+  const { cartItems } = useCart()
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -23,9 +27,19 @@ const Navbar = () => {
         </div>
         <div className="text-3xl text-[#8B4513] hidden md:block">
           <Link href={"/cart"}>🛒</Link>
+          {totalItems > 0 && (
+          <span className="absolute top-7 right-[10rem] bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+            {totalItems}
+          </span>
+        )}
         </div>
-        <div className="md:hidden flex items-center gap-4">
-          <Link href={"/cart"} className="text-2xl hidden">🛒</Link>
+        <div className="md:hidden flex items-center gap-6">
+          <Link href={"/cart"} className="text-2xl">🛒</Link>
+          {totalItems > 0 && (
+          <span className="absolute top-[1.7rem] right-[6rem] bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+            {totalItems}
+          </span>
+        )}
           <button onClick={() => setMenuOpen(!menuOpen)} className="text-3xl text-[#8B4513]">
             ☰
           </button>

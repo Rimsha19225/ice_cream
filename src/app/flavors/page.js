@@ -9,7 +9,6 @@ export default async function Flavors() {
   const query = `*[_type == "item"]{
   _id,
   title,
-  description,
   price,
   slug,
   image,
