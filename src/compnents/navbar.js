@@ -13,13 +13,13 @@ const Navbar = () => {
 
   return (
     <div className="relative w-full z-50">
-      <div className='w-full h-[15vh] flex justify-between items-center px-4 max-w-[80%] m-auto'>
+      <div className='w-full h-[15vh] flex justify-between items-center px-4 max-w-[98%] md:max-w-[90%] m-auto'>
         <div>
           <Link href={"/"}>
             <Image src={icon} alt='icon' className='w-[2.5rem] h-[2.5rem] md:w-[4rem] md:h-[4rem] shake-on-hover' />
           </Link>
         </div>
-        <div className='hidden md:flex gap-[3rem] text-[#8B4513] font-bold'>
+        <div className='hidden md:flex gap-[5rem] text-[#8B4513] font-bold'>
           <Link href="/" className="hover:underline underline-offset-4 transition duration-200">Home</Link>
           <Link href="/about" className="hover:underline underline-offset-4 transition duration-200">About</Link>
           <Link href="/flavors" className="hover:underline underline-offset-4 transition duration-200">Flavors</Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="text-3xl text-[#8B4513] hidden md:block">
           <Link href={"/cart"}>🛒</Link>
           {totalItems > 0 && (
-          <span className="absolute top-7 right-[10rem] bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+          <span className="absolute top-7 right-[5.5rem] bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
             {totalItems}
           </span>
         )}
@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-6">
           <Link href={"/cart"} className="text-2xl">🛒</Link>
           {totalItems > 0 && (
-          <span className="absolute top-[1.7rem] right-[6rem] bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+          <span className="absolute top-[1.7rem] right-[4rem] bg-red-500 text-white text-xs px-1.5 py-0.4 rounded-full">
             {totalItems}
           </span>
         )}

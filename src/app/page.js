@@ -19,7 +19,7 @@ export default function Home() {
             <h2 className="font_style font-bold text-[2.2rem] md:text-[3rem] text-[#8B4513] mb-8 md:mb-10 cursor-pointer tracking-wider">Ice Cream Shop</h2>
             <p className="text-[#91572d] text-[0.8rem] md:text-lg">Enjoy our rich, creamy ice creams in flavors like chocolate, vanilla, strawberry, and more. Made fresh daily, each scoop is a sweet treat to brighten your day.</p>
             <div className="mt-3 md:mt-6 flex gap-4">
-              <Link href={"/cart"}><button className="p-[0.5rem] md:p-[0.7rem] bg-[#8B4513] text-[0.7rem] md:text-[1rem] rounded-xl md:rounded-2xl text-white hover:bg-[#91572d]">Order Now</button></Link>
+              <Link href={"/reviews"}><button className="p-[0.5rem] md:p-[0.7rem] bg-[#8B4513] text-[0.7rem] md:text-[1rem] rounded-xl md:rounded-2xl text-white hover:bg-[#91572d]">Review</button></Link>
               <Link href={"/flavors"}><button className="p-[0.5rem] md:p-[0.7rem] bg-[#8B4513] text-[0.7rem] md:text-[1rem] rounded-xl md:rounded-2xl text-white hover:bg-[#91572d]">More Flavor</button></Link>
             </div>
           </div>

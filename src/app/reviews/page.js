@@ -34,10 +34,10 @@ export default function ReviewsPage() {
     cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)
 
   return (
-    <div className="min-h-screen bg-[#fff9f5] text-[#8B4513]">
+    <div className="min-h-screen bg-gradient-to-br from-white to-[#c1a089] text-[#8B4513]">
       <Navbar />
-      <div className="max-w-5xl mx-auto p-6">
-        <h1 className="font_style text-[3rem] tracking-wider font-extrabold mb-10 text-center text-[#8B4513]">Customer Reviews</h1>
+      <div className="max-w-5xl mx-auto px-3 md:px-6 pb-10">
+        <h1 className="font_style text-[2rem] md:text-[3rem] tracking-widest font-extrabold mb-10 text-center text-[#8B4513]">Customer Reviews</h1>
 
         {/* Cart Summary Section */}
         {cartItems.length > 0 && (
@@ -45,7 +45,7 @@ export default function ReviewsPage() {
             <h2 className="text-2xl font-semibold mb-3">Your Cart Summary</h2>
             <div className="space-y-4">
               {cartItems.map((item) => (
-                <div key={item._id} className="flex items-center justify-between bg-white p-4 rounded-lg shadow">
+                <div key={item._id} className="flex items-center justify-between bg-[#faeee6] p-4 rounded-lg shadow">
                   <div className="flex items-center gap-3">
                     <Image src={item.imageUrl} alt={item.title} width={60} height={60} className="rounded-md" />
                     <div>
@@ -62,7 +62,7 @@ export default function ReviewsPage() {
         )}
 
         {/* Submit Review Form */}
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow space-y-4 mb-10">
+        <form onSubmit={handleSubmit} className="bg-[#faeee6] p-3 md:p-6 rounded-lg shadow space-y-4 mb-10">
           <h2 className="text-2xl font-semibold mb-2">Leave a Review</h2>
 
           <input
@@ -109,7 +109,7 @@ export default function ReviewsPage() {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold mb-2">What others are saying:</h2>
           {reviews.map((review, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow">
+            <div key={index} className="bg-[#faeee6] p-4 rounded-lg shadow">
               <h3 className="text-lg font-bold">{review.name}</h3>
               <p className="text-yellow-500">{"⭐".repeat(review.rating)}</p>
               <p className="mt-1">{review.message}</p>

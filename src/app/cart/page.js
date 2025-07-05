@@ -17,7 +17,7 @@ export default function CartPage() {
       <h1 className="font_style text-[2rem] md:text-[3rem] tracking-wider font-extrabold mb-4 md:mb-8 text-center text-[#8B4513] mt-[-1rem] md:mt-0">Your Cart</h1>
 
       {cartItems.length === 0 ? (
-        <p className="text-center text-xl">Your cart is empty.</p>
+        <p className="text-[0.9rem] text-center md:text-xl mt-[2rem]">Your cart is empty.</p>
       ) : (
         <div className="max-w-4xl mx-auto p-2 md:p-5 space-y-6">
           {cartItems.map((item, index) => (

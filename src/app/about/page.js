@@ -9,7 +9,7 @@ export default function AboutPage() {
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-6 pb-10">
-        <h1 className="font_style text-[2rem] md:text-[3rem] tracking-widest font-extrabold mb-4 text-center text-[#8B4513]">
+        <h1 className="font_style text-[1.5rem] md:text-[3rem] tracking-wider md:tracking-widest font-extrabold mb-4 text-center text-[#8B4513]">
           About Our Ice Cream Shop
         </h1>
         <div className="flex justify-center mb-5 md:mb-10">
