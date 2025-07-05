@@ -58,8 +58,6 @@ export default function ReviewsPage() {
             </div>
           </div>
         )}
-
-        {/* Submit Review Form */}
         <form onSubmit={handleSubmit} className="bg-[#faeee6] p-3 md:p-6 rounded-lg shadow space-y-4 mb-10">
           <h2 className="text-2xl font-semibold mb-2">Leave a Review</h2>
 
@@ -102,8 +100,6 @@ export default function ReviewsPage() {
             Submit Review
           </button>
         </form>
-
-        {/* Review List */}
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold mb-2">What others are saying:</h2>
           {reviews.map((review, index) => (
