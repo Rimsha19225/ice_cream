@@ -28,7 +28,7 @@ export default async function FlavorDetail({ params }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center pt-2 md:pt-10 px-2">
         {/* Left: Image */}
         <div>
-          {item.image?.asset?.url && (
+          {item?.image?.asset?.url && (
             <Image
               src={item.image.asset.url}
               alt={item.title}

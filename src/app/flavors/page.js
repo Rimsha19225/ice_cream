@@ -28,7 +28,7 @@ export default async function Flavors() {
     className="bg-[#faeee6] shadow-lg rounded-2xl p-2 md:p-5 transform transition duration-300 hover:scale-102 group"
   >
     <Link href={`/flavors/${item.slug.current}`}>
-    {item.imageUrl && (
+    {item?.imageUrl && (
       <Image
         src={item.imageUrl}
         alt={item.title}
