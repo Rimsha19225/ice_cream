@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useCart } from '@/context/CartContext'
 import Navbar from '@/compnents/navbar'
 import Image from 'next/image'
+import { client } from '@/sanity/lib/client'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function CheckoutPage() {
   const { cartItems } = useCart()
@@ -18,14 +20,52 @@ export default function CheckoutPage() {
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
   const handleChange = (e) => {
+    console.log("Cart items being submitted:", cartItems)
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (cartItems.length === 0) return
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+
+  if (cartItems.length === 0) return
+
+  try {
+    // Construct order object for Sanity
+    const newOrder = {
+      _type: 'order',
+      name: formData.name,
+      address: formData.address,
+      createdAt: new Date().toISOString(),
+      cartItems: cartItems.map(item => {
+        const cartItem = {
+          _key: uuidv4(),
+          _type: 'object',
+          title: item.title,
+          price: item.price,
+          quantity: item.quantity,
+        }
+
+        if (item.imageRef && typeof item.imageRef === 'string') {
+          cartItem.image = {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: item.imageRef,
+            },
+          }
+        }
+
+        return cartItem
+      }),
+    }
+
+    await client.create(newOrder)
+
     setOrderPlaced(true)
+  } catch (error) {
+    console.error('Order failed to save:', error)
   }
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-[#c1a089] text-[#8B4513]">

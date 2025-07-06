@@ -11,7 +11,13 @@ export default async function Flavors() {
   title,
   price,
   slug,
-  image,
+  image {
+    asset->{
+      _id,
+      url,
+      _ref
+    }
+  },
   "imageUrl": image.asset->url
 }`
   const items = await client.fetch(query)

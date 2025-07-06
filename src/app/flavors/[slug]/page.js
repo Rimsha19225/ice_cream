@@ -14,7 +14,13 @@ export default async function FlavorDetail({ params }) {
   title,
   description,
   price,
-  image,
+  image {
+    asset->{
+      _id,
+      url,
+      _ref
+    }
+  },
   "imageUrl": image.asset->url
 }`
 

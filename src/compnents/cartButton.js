@@ -5,11 +5,13 @@ import { useCart } from '@/context/CartContext'
 export default function CartButton({ product }) {
   const { addToCart } = useCart()
   const handleAddToCart = () => {
+    const imageRef = product?.image?.asset?._ref
     const normalizedProduct = {
       _id: product._id,
       title: product.title,
       price: product.price,
       imageUrl: product.imageUrl || product.image?.asset?.url || '',
+      imageRef: (imageRef && { imageRef }),
     }
 
     addToCart(normalizedProduct)
