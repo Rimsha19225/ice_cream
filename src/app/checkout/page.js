@@ -30,34 +30,47 @@ export default function CheckoutPage() {
   if (cartItems.length === 0) return
 
   try {
-    // Construct order object for Sanity
-    const newOrder = {
-      _type: 'order',
-      name: formData.name,
-      address: formData.address,
-      createdAt: new Date().toISOString(),
-      cartItems: cartItems.map(item => {
-        const cartItem = {
-          _key: uuidv4(),
-          _type: 'object',
-          title: item.title,
-          price: item.price,
-          quantity: item.quantity,
-        }
+    const cartItemsWithImages = await Promise.all(
+  cartItems.map(async (item) => {
+    let imageRefId = null
 
-        if (item.imageRef && typeof item.imageRef === 'string') {
-          cartItem.image = {
+    if (item.imageUrl) {
+      const response = await fetch(item.imageUrl)
+      const blob = await response.blob()
+
+      const uploadedAsset = await client.assets.upload('image', blob, {
+        filename: `${item.title}.jpg`,
+      })
+
+      imageRefId = uploadedAsset._id
+    }
+
+    return {
+      _key: uuidv4(),
+      _type: 'object',
+      title: item.title,
+      price: item.price,
+      quantity: item.quantity,
+      image: imageRefId
+        ? {
             _type: 'image',
             asset: {
               _type: 'reference',
-              _ref: item.imageRef,
+              _ref: imageRefId,
             },
           }
-        }
-
-        return cartItem
-      }),
+        : undefined,
     }
+  })
+)
+
+const newOrder = {
+  _type: 'order',
+  name: formData.name,
+  address: formData.address,
+  createdAt: new Date().toISOString(),
+  cartItems: cartItemsWithImages,
+}
 
     await client.create(newOrder)
 
@@ -119,7 +132,6 @@ export default function CheckoutPage() {
                 Place Order
               </button>
             </form>
-            {/* Cart Summary */}
             <div className="space-y-4 mb-10">
               <h2 className="text-2xl font-semibold mb-2 mt-4 md:mt-8">Your Order:</h2>
               {cartItems.map((item) => (
